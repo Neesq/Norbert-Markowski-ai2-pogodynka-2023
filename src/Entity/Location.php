@@ -26,14 +26,14 @@ class Location
     private ?string $latitude = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 7)]
-    private ?string $longitude = null;
+    private ?string $langitude = null;
 
-    #[ORM\OneToMany(mappedBy: 'location', targetEntity: Forecast::class)]
-    private Collection $forecasts;
+    #[ORM\OneToMany(mappedBy: 'location', targetEntity: Measurement::class)]
+    private Collection $measurements;
 
     public function __construct()
     {
-        $this->forecasts = new ArrayCollection();
+        $this->measurements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,42 +77,42 @@ class Location
         return $this;
     }
 
-    public function getLongitude(): ?string
+    public function getLangitude(): ?string
     {
-        return $this->longitude;
+        return $this->langitude;
     }
 
-    public function setLongitude(string $longitude): static
+    public function setLangitude(string $langitude): static
     {
-        $this->longitude = $longitude;
+        $this->langitude = $langitude;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Forecast>
+     * @return Collection<int, Measurement>
      */
-    public function getForecasts(): Collection
+    public function getMeasurements(): Collection
     {
-        return $this->forecasts;
+        return $this->measurements;
     }
 
-    public function addForecast(Forecast $forecast): static
+    public function addMeasurement(Measurement $measurement): static
     {
-        if (!$this->forecasts->contains($forecast)) {
-            $this->forecasts->add($forecast);
-            $forecast->setLocation($this);
+        if (!$this->measurements->contains($measurement)) {
+            $this->measurements->add($measurement);
+            $measurement->setLocation($this);
         }
 
         return $this;
     }
 
-    public function removeForecast(Forecast $forecast): static
+    public function removeMeasurement(Measurement $measurement): static
     {
-        if ($this->forecasts->removeElement($forecast)) {
+        if ($this->measurements->removeElement($measurement)) {
             // set the owning side to null (unless already changed)
-            if ($forecast->getLocation() === $this) {
-                $forecast->setLocation(null);
+            if ($measurement->getLocation() === $this) {
+                $measurement->setLocation(null);
             }
         }
 

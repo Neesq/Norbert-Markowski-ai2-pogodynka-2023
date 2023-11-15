@@ -1,7 +1,5 @@
 
 ###> symfony/framework-bundle ###
-/.env
-/.env.test
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -21,7 +19,4 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-### config files ### 
-/config
-composer.json
-composer.lock
+/.idea
