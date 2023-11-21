@@ -20,4 +20,20 @@ class LocationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Location::class);
     }
+
+
+    // public function findOneBy(array $criteria, ?array $orderBy = null): ?Location
+    // {
+    //     if (isset($criteria['countryCode']) && isset($criteria['city'])) {
+    //         $qb = $this->createQueryBuilder('l');
+    //         $qb->where('l.country = :countryCode')
+    //             ->setParameter('countryCode', $criteria['countryCode'])
+    //             ->andWhere('l.city = :city')
+    //             ->setParameter('city', $criteria['city']);
+
+    //         $query = $qb->getQuery();
+    //         return $query->getOneOrNullResult();
+    //     }
+    //     return null;
+    // }
 }

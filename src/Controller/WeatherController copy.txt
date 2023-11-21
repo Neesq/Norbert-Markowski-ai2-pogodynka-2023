@@ -19,6 +19,7 @@ class WeatherController extends AbstractController
         WeatherUtil $util,
     ): Response
     {
+        die($location->getId());
         $measurements = $util->getWeatherForCountryAndCity($location->getCountry(), $location->getCity());
 
         return $this->render('weather/city.html.twig', [

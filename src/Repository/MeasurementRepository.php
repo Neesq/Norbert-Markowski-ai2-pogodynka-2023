@@ -31,7 +31,6 @@ class MeasurementRepository extends ServiceEntityRepository
             ->andWhere('m.date > :now')
             ->setParameter('now', date('Y-m-d'))
         ;
-
         $query = $qb->getQuery();
         $result = $query->getResult();
         return $result;
